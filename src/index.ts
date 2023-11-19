@@ -5,6 +5,7 @@ import { PrismaClient } from '@prisma/client';
 import { loginSchema, registerSchema } from './yupSchemas';
 import { checkPassword, generateToken, hashPassword, verifyToken } from './utils/utilFunctions';
 import { IReviewsDto } from './interfaces';
+import swaggerDocs from './utils/swagger';
 
 export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const token = req.headers.authorization?.split(' ')[1];
@@ -28,6 +29,7 @@ const prisma = new PrismaClient();
 app.get('/', (req: Request, res: Response) => {
   res.send('Server is running');
 });
+
 
 app.post('/auth/login', async (req: Request, res: Response) => {
   try {
@@ -169,4 +171,5 @@ app.get('/reviews/:companyName', authMiddleware, async (req: Request, res: Respo
 
 app.listen(PORT, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
+  swaggerDocs(app, PORT);
 });

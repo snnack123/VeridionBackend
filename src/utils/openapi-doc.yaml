@@ -1,0 +1,217 @@
+paths:
+  /:
+    get:
+      tags:
+        - Healthcheck
+      description: Responds if the app is up and running
+      responses:
+        '200':
+          description: Server is running
+
+  /auth/login:
+    post:
+      tags:
+        - User
+      summary: Login user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  default: email@gmail.com
+                password:
+                  type: string
+                  default: password
+      responses:
+        '200':
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                  message:
+                    type: string
+        '401':
+          description: Invalid credentials
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                  message:
+                    type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                  message:
+                    type: string
+
+/auth/register:
+  post:
+    tags:
+      - User
+    summary: Register user
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              email:
+                type: string
+              password:
+                type: string
+              name:
+                type: string
+    responses:
+      '200':
+        description: User created successfully
+      '409':
+        description: User already exists
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                message:
+                  type: string
+      '500':
+        description: Internal Server Error
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                message:
+                  type: string
+
+/auth/check:
+  get:
+    tags:
+      - User
+    summary: Check user authentication
+    responses:
+      '200':
+        description: User found
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                message:
+                  type: string
+      '401':
+        description: No token provided or Token expired
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                message:
+                  type: string
+      '404':
+        description: User not found
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                message:
+                  type: string
+      '500':
+        description: Internal Server Error
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                message:
+                  type: string
+
+/company:
+  post:
+    tags:
+      - Company
+    summary: Create a company
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object  # Add your company schema here
+    responses:
+      '200':
+        description: Company created successfully
+      '401':
+        description: Unauthorized
+      '500':
+        description: Internal Server Error
+
+/reviews/{companyName}:
+  get:
+    tags:
+      - Reviews
+    summary: Get reviews for a company
+    parameters:
+      - name: companyName
+        in: path
+        required: true
+        schema:
+          type: string
+    responses:
+      '200':
+        description: Reviews found
+        content:
+          application/json:
+            schema:
+              type: object  # Add your reviews schema here
+      '404':
+        description: Company not found
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                message:
+                  type: string
+      '500':
+        description: Internal Server Error
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                message:
+                  type: string

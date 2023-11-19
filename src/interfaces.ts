@@ -20,3 +20,8 @@ export interface IReviewsDto {
   reviews: IReview[];
   rating: number;
 }
+
+export interface ILoginRequest {
+  email: string;
+  password: string;
+}

@@ -19,13 +19,13 @@ These constitute the procedural steps required to perform the cloning of the pro
 - ```http://localhost:3000/reviews/:companyName``` - **PROTECTED BY MIDDLEWARE** - This route takes the company name as input, which is then used to perform a search using Google APIs with an access key. Subsequently, it makes another request to the same API, this time using the company's ID, to obtain a list of reviews.
 
 ## ENV example
-PORT = 
-DATABASE_URL=
-TOKEN_SECRET =
+PORT = <br/>
+DATABASE_URL= <br/>
+TOKEN_SECRET = <br/> <br/>
 
-VERIDION_API_KEY =
-CHAT_GPT_API_KEY =
-GOOGLE_API_KEY =
+VERIDION_API_KEY = <br/>
+CHAT_GPT_API_KEY = <br/>
+GOOGLE_API_KEY = <br/>
 
 ## Unfinished Work
 - The Google API returns a maximum of 5 reviews, and due to time constraints, I couldn't spend more time investigating the issue.

@@ -21,7 +21,7 @@ These constitute the procedural steps required to perform the cloning of the pro
 ## ENV example
 PORT = <br/>
 DATABASE_URL= <br/>
-TOKEN_SECRET = <br/> <br/>
+TOKEN_SECRET = <br/>
 
 VERIDION_API_KEY = <br/>
 CHAT_GPT_API_KEY = <br/>

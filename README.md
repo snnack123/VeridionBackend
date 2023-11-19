@@ -1,4 +1,4 @@
-# Express.js + TypeScript + Prisma + PostrgeSQL + Google APIs
+# Express.js + TypeScript + Prisma + PostrgeSQL + Swagger + Google APIs
 
 This application constitutes a prototype intended for the development of a server-side application using technologies such as Express.js, TypeScript, Prisma, PostgreSQL and Google APIs. The primary objective is to establish a server that serves the client application by providing methods to retrieve information from the database.
 The sole purpose of the database is to record and authenticate users, with a single table dedicated to them in the database.
@@ -17,6 +17,7 @@ These constitute the procedural steps required to perform the cloning of the pro
 - ```http://localhost:3000/auth/check``` - This route is intended to verify the user's token when they refresh the page or enter the application, provided that a token is stored in the local storage;
 - ```http://localhost:3000/company``` - **PROTECTED BY MIDDLEWARE** - This route receives in the request body an object containing identification data for a specific company. It returns the response to the client;
 - ```http://localhost:3000/reviews/:companyName``` - **PROTECTED BY MIDDLEWARE** - This route takes the company name as input, which is then used to perform a search using Google APIs with an access key. Subsequently, it makes another request to the same API, this time using the company's ID, to obtain a list of reviews.
+- ```http://localhost:3000/docs``` - This route serves Swagger documentation for the API.
 
 ## ENV example
 PORT = <br/>

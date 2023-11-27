@@ -1,4 +1,4 @@
-# Express.js + TypeScript + Prisma + PostrgeSQL + Swagger + Google APIs
+# Express.js + TypeScript + Prisma + PostgreSQL + Swagger + Google APIs
 
 This application constitutes a prototype intended for the development of a server-side application using technologies such as Express.js, TypeScript, Prisma, PostgreSQL and Google APIs. The primary objective is to establish a server that serves the client application by providing methods to retrieve information from the database.
 The sole purpose of the database is to record and authenticate users, with a single table dedicated to them in the database.
